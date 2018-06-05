@@ -1,0 +1,15 @@
+﻿@model CapStone_6.Models.ForgotPasswordModel
+
+@Html.BeginForm("PerformForgotPassword", "ForgotPassword")
+{
+@Html.TextBoxFor(m => m.UserName)
+
+@Html.TextBoxFor(m => m.Password)
+
+<input type="submit" value="Change password" />
+
+}
+
+
+
+
