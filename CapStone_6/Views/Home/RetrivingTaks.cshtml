@@ -19,13 +19,12 @@
         <th>@item.DueDate</th>
         <th>@item.TaskNumber</th>
         <th>@item.Status</th>
-
         <th>
-            <a href="/Home/DeleteTask?TaskNu=@item.TaskNumber" onclick="return confirm('are you sure')" class="btn btn-danger btn-sm ">
-                <span class=" glyphicon glyphicon-trash"></span>Delete
+            <a href="/Home/DeleteTask?TaskNu=@item.TaskNumber" onclick="return confirm('Delete ?')" class="btn btn-danger btn-sm ">
+                <span class=" glyphicon glyphicon-trash"></span>Remove Task
             </a>
         </th>
-        <td><a href="/Home/UpdateTask?UpdateTaskies=@item.TaskNumber">Update</a></td>
+        <td><a href="/Home/UpdateTask?UpdateTaskies=@item.TaskNumber">Edit Task</a></td>
     </tr>
     }
 </table>
@@ -44,3 +43,6 @@
 </form>
 
 
+<form action="/Home/LogOut" method="get">
+    <input type="submit" value="LogOut" />
+</form>

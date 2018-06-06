@@ -34,11 +34,6 @@ namespace CapStone_6.Controllers
             return View();
         }
 
-        //public ActionResult Welcome()
-        //{
-        //    return View();
-        //}
-
         public ActionResult SignIn(UserTable UserInn)
         {
             TaskListEntities ORM = new TaskListEntities();
@@ -125,10 +120,19 @@ namespace CapStone_6.Controllers
             return View(item);
         }
 
+        public ActionResult LogOut()
+        {
+            return RedirectToAction("Contact");
+        }
+
     }
 }
 
 
+//public ActionResult Welcome()
+//{
+//    return View();
+//}
 
 // List<UserTable> users = ORM.UserTables.ToList();
 
