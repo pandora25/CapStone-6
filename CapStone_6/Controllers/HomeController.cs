@@ -104,6 +104,27 @@ namespace CapStone_6.Controllers
             return RedirectToAction("RetrivingTaks");
         }
 
+        public ActionResult DeleteTask(string TaskNu)
+        {
+            TaskListEntities ORM = new TaskListEntities();
+
+            TaskTable founded = ORM.TaskTables.Find(TaskNu);
+
+            ORM.TaskTables.Remove(founded);
+            ORM.SaveChanges();
+            return RedirectToAction("RetrivingTaks");
+        }
+
+        public ActionResult UpdateTask(string UpdateTaskies)
+        {
+            TaskListEntities ORM = new TaskListEntities();
+
+
+            TaskTable item = ORM.TaskTables.Find(UpdateTaskies);
+
+            return View(item);
+        }
+
     }
 }
 

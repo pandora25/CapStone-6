@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "UpdateTask";
+}
+
+<h2>Update Task</h2>
+
+<form action="/Home/UpdateTask" method="post">
+    Name:<input type="text" name="Name" value="@Model.Name" readonly /><br />
+    Description: <input type="text" name="Description" value="@Model.Description" /><br />
+    DueDate:<input type="text" name="DueDate" value="@Model.DueDate" /><br />
+    TaskNumber:<input inputmode="text" name="TaskNumber" value="@Model.TaskNumber" />
+    Status:<input inputmode="text" name="Status" value="@Model.Status" />
+    <input type="submit" value="Save Updates" />
+</form>
+

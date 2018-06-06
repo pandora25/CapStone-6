@@ -19,12 +19,13 @@
         <th>@item.DueDate</th>
         <th>@item.TaskNumber</th>
         <th>@item.Status</th>
+
         <th>
-            <a href="/Home/DeleteItem?Name=@item.TaskNumber" onclick="return confirm('are you sure')" class="btn btn-danger btn-sm ">
+            <a href="/Home/DeleteTask?TaskNu=@item.TaskNumber" onclick="return confirm('are you sure')" class="btn btn-danger btn-sm ">
                 <span class=" glyphicon glyphicon-trash"></span>Delete
             </a>
         </th>
-        <td><a href="/Home/UpdateItem?UpdateItems=@item.TaskNumber">Edit</a></td>
+        <td><a href="/Home/UpdateTask?UpdateTaskies=@item.TaskNumber">Update</a></td>
     </tr>
     }
 </table>
