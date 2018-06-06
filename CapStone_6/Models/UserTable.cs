@@ -19,6 +19,7 @@ namespace CapStone_6.Models
         {
             this.TaskTables = new HashSet<TaskTable>();
         }
+    
         public string UserName { get; set; }
         public string Password { get; set; }
     

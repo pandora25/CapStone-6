@@ -7,7 +7,7 @@
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DueDate" Type="date" Nullable="false" />
-    <Property Name="TaskNumber" Type="nchar" MaxLength="3" Nullable="false" />
+    <Property Name="TaskNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="UserTable">
@@ -17,7 +17,7 @@
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_TaskTable_UserTable">
+  <Association Name="FK_TaskTable_UserTable1">
     <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
     <End Role="TaskTable" Type="Self.TaskTable" Multiplicity="*" />
     <ReferentialConstraint>
@@ -32,7 +32,7 @@
   <EntityContainer Name="TaskListModelStoreContainer">
     <EntitySet Name="TaskTable" EntityType="Self.TaskTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_TaskTable_UserTable" Association="Self.FK_TaskTable_UserTable">
+    <AssociationSet Name="FK_TaskTable_UserTable1" Association="Self.FK_TaskTable_UserTable1">
       <End Role="UserTable" EntitySet="UserTable" />
       <End Role="TaskTable" EntitySet="TaskTable" />
     </AssociationSet>

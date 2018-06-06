@@ -34,9 +34,29 @@ namespace CapStone_6.Controllers
             return View();
         }
 
-        public ActionResult Welcome()
+        //public ActionResult Welcome()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult SignIn(UserTable UserInn)
         {
-            return View("welcome");
+            TaskListEntities ORM = new TaskListEntities();
+
+            UserTable currentUser = ORM.UserTables.Find(UserInn.UserName);
+
+            if (currentUser == null)
+            {
+                ViewBag.Error = "User name does not exist. Did you mean to register?";
+                return View("Index");
+            }
+            else if (currentUser.Password != UserInn.Password)
+            {
+                ViewBag.Error = "Incorrect password.";
+                return View("Index");
+            }
+            ViewBag.Message = $"Welcome {UserInn.UserName}";
+            return RedirectToAction("RetrivingTaks");
         }
 
         public ActionResult RigesterNewUser(UserTable newUser)
@@ -48,33 +68,34 @@ namespace CapStone_6.Controllers
                 ORM.UserTables.Add(newUser);
                 ORM.SaveChanges();
                 ViewBag.Message = $"{newUser.UserName} Welcome to our system ";
-                return View("Welcome");
+                return RedirectToAction("RetrivingTaks");
             }
             else
             {
                 return View("Error");
             }
-
         }
 
-        public ActionResult SignIn(UserTable UserName, string Password)
+        public ActionResult RetrivingTaks(TaskTable Taskies)
+        {
+            TaskListEntities ORM = new TaskListEntities();
+            ViewBag.Tasks = ORM.TaskTables.ToList();
+            return View();
+        }
+
+        public ActionResult AddTask(TaskTable AddTask)
         {
             TaskListEntities ORM = new TaskListEntities();
 
-            UserTable currentUser = ORM.UserTables.Find(UserName);
-
-            if (currentUser == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "User name does not exist. Did you mean to register?";
-                return View("Index");
-
+                ORM.TaskTables.Add(AddTask);
+                ORM.SaveChanges();
+               // ViewBag.Result = ORM.TaskTables.ToList();
+              //  ViewBag.Taskies = $"{AddingItems.Name} has been added";
+                return RedirectToAction("RetrivingTaks");
             }
-            else if(currentUser.Password != Password)
-            {
-                ViewBag.Error = "Incorrect password.";
-            }
-            ViewBag.Message = $"Welcome  {UserName}";
-            return View("Welcome");
+            return View("Error");
         }
 
 

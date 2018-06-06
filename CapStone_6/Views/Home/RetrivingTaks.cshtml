@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "RetrivingTaks";
+}
+<h2>Retriving Tasks</h2>
+
+<table class="table">
+    <tr>
+        <th><p>User Name</p></th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Task Number</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var item in ViewBag.Tasks)
+    {
+        <tr>
+            <th>@item.UserName</th>
+            <th>@item.Description</th>
+            <th>@item.DueDate</th>
+            <th>@item.TaskNumber</th>
+            <th>@item.Status</th>
+        </tr>
+    }
+</table>
+
