@@ -1,11 +1,11 @@
 ﻿@{
     ViewBag.Title = "RetrivingTaks";
 }
-<h2>Retriving Tasks</h2>
+<h2>Tasks List</h2>
 
 <table class="table">
     <tr>
-        <th><p>User Name</p></th>
+        <th><p>Task Name</p></th>
         <th>Description</th>
         <th>Due Date</th>
         <th>Task Number</th>
@@ -13,13 +13,33 @@
     </tr>
     @foreach (var item in ViewBag.Tasks)
     {
-        <tr>
-            <th>@item.UserName</th>
-            <th>@item.Description</th>
-            <th>@item.DueDate</th>
-            <th>@item.TaskNumber</th>
-            <th>@item.Status</th>
-        </tr>
+    <tr>
+        <th>@item.UserName</th>
+        <th>@item.Description</th>
+        <th>@item.DueDate</th>
+        <th>@item.TaskNumber</th>
+        <th>@item.Status</th>
+        <th>
+            <a href="/Home/DeleteItem?Name=@item.TaskNumber" onclick="return confirm('are you sure')" class="btn btn-danger btn-sm ">
+                <span class=" glyphicon glyphicon-trash"></span>Delete
+            </a>
+        </th>
+        <td><a href="/Home/UpdateItem?UpdateItems=@item.TaskNumber">Edit</a></td>
+    </tr>
     }
 </table>
+<hr />
+<hr />
+
+<h2>Add Task</h2>
+
+<form action="/Home/AddTask" method="get">
+    Task Name: <input type="text" name="UserName" />
+    Description: <input type="text" name="Description" />
+    DueDate: <input type="date" name="DueDate" />
+    TaskNumber: <input type="number" name="TaskNumber" /><br />
+    Status: <input type="text" name="Status" />
+    <input type="submit" value="Submit" />
+</form>
+
 

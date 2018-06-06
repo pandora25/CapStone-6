@@ -91,13 +91,18 @@ namespace CapStone_6.Controllers
             {
                 ORM.TaskTables.Add(AddTask);
                 ORM.SaveChanges();
-               // ViewBag.Result = ORM.TaskTables.ToList();
-              //  ViewBag.Taskies = $"{AddingItems.Name} has been added";
+                //ViewBag.RetrivingTasks = ORM.TaskTables.ToList();
+                //ViewBag.TasksRequsit = $"{AddTask.TaskNumber}";
                 return RedirectToAction("RetrivingTaks");
             }
+          
             return View("Error");
         }
 
+        public ActionResult Swither()
+        {
+            return RedirectToAction("RetrivingTaks");
+        }
 
     }
 }
